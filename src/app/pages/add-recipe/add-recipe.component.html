@@ -1,0 +1,187 @@
+<div class="page">
+
+  <div class="form-layout">
+
+    <!-- MAIN CARD -->
+    <div class="card">
+
+      <div class="card-header">
+        <div class="card-icon">🍳</div>
+        <div>
+          <h2 class="card-title">Nouvelle Recette</h2>
+          <p class="card-sub">Remplissez les informations ci-dessous</p>
+        </div>
+      </div>
+
+      <form (ngSubmit)="submit()" #f="ngForm" class="form">
+
+        <!-- Titre + Catégorie -->
+        <div class="row-2">
+
+          <div class="field">
+            <label for="title">
+              <span class="label-icon">✏️</span> Titre <span class="required">*</span>
+            </label>
+            <input
+              id="title"
+              [(ngModel)]="recipe.title"
+              name="title"
+              required
+              placeholder="Ex: Tarte Tatin, Carbonara…"
+              [class.error]="f.submitted && !recipe.title"
+            />
+            <span class="error-msg" *ngIf="f.submitted && !recipe.title">Le titre est obligatoire</span>
+          </div>
+
+          <div class="field">
+            <label for="category">
+              <span class="label-icon">📂</span> Catégorie <span class="required">*</span>
+            </label>
+            <div class="select-wrap">
+          <select
+  id="category"
+  [(ngModel)]="recipe.category"
+  name="category"
+  required
+>
+  <option value="">Choisir une catégorie…</option>
+
+  <option *ngFor="let c of categories" [value]="c._id">
+    📂 {{ c.name }}
+  </option>
+
+</select>
+              <span class="select-arrow">▼</span>
+            </div>
+            <span class="error-msg" *ngIf="f.submitted && !recipe.category">La catégorie est obligatoire</span>
+          </div>
+
+        </div>
+
+        <!-- Description -->
+        <div class="field">
+          <label for="description">
+            <span class="label-icon">📝</span> Description <span class="required">*</span>
+          </label>
+          <textarea
+            id="description"
+            [(ngModel)]="recipe.description"
+            name="description"
+            required
+            placeholder="Décrivez votre recette, son origine, ses saveurs…"
+            [class.error]="f.submitted && !recipe.description"
+          ></textarea>
+          <span class="error-msg" *ngIf="f.submitted && !recipe.description">La description est obligatoire</span>
+        </div>
+
+        <!-- Ingrédients -->
+        <div class="field">
+          <label for="ingredients">
+            <span class="label-icon">🧂</span> Ingrédients
+          </label>
+           <!-- 🔥 INGREDIENTS STRING -->
+          <input [(ngModel)]="recipe.ingredients"
+         name="ingredients"
+         placeholder="tomato, cheese, onion">
+          <p class="hint">Séparez chaque ingrédient par une virgule <strong>,</strong></p>
+        </div>
+
+        <!-- Difficulté -->
+        <div class="field">
+          <label><span class="label-icon">⚡</span> Difficulté</label>
+          <div class="diff-group">
+
+            <input type="radio" id="facile" name="difficulty" [(ngModel)]="recipe.difficulty" value="facile" class="diff-radio" />
+            <label for="facile" class="diff-pill green">
+              <span class="diff-dot"></span> Facile
+            </label>
+
+            <input type="radio" id="moyen" name="difficulty" [(ngModel)]="recipe.difficulty" value="moyen" class="diff-radio" />
+            <label for="moyen" class="diff-pill orange">
+              <span class="diff-dot"></span> Moyen
+            </label>
+
+            <input type="radio" id="difficile" name="difficulty" [(ngModel)]="recipe.difficulty" value="difficile" class="diff-radio" />
+            <label for="difficile" class="diff-pill red">
+              <span class="diff-dot"></span> Difficile
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Image URL -->
+        <div class="field">
+          <label for="image">
+            <span class="label-icon">🖼️</span> Image (URL)
+          </label>
+          <input
+            id="image"
+            [(ngModel)]="recipe.image"
+            name="image"
+            placeholder="https://exemple.com/image.jpg"
+          />
+          <p class="hint">Laissez vide pour une image par défaut</p>
+        </div>
+
+        <!-- Preview image -->
+        <div class="img-preview" *ngIf="recipe.image">
+          <img [src]="recipe.image" alt="Aperçu" (error)="recipe.image = ''" />
+        </div>
+
+        <!-- Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" routerLink="/recipes">
+            ← Annuler
+          </button>
+          <button type="submit" class="btn-submit" [disabled]="loading">
+            <span *ngIf="!loading">✓ Enregistrer la recette</span>
+            <span *ngIf="loading" class="spinner"></span>
+          </button>
+        </div>
+
+        <!-- Error global -->
+        <div class="alert-error" *ngIf="errorMsg">
+          ⚠️ {{ errorMsg }}
+        </div>
+
+      </form>
+    </div>
+
+    <!-- SIDE TIPS -->
+    <div class="side-panel">
+      <div class="tips-card">
+        <div class="tips-title">💡 Conseils</div>
+        <div class="tip-item">
+          <span class="tip-dot">·</span>
+          <span>Un titre clair aide à retrouver vos recettes rapidement.</span>
+        </div>
+        <div class="tip-item">
+          <span class="tip-dot">·</span>
+          <span>Listez chaque ingrédient séparé par une virgule.</span>
+        </div>
+        <div class="tip-item">
+          <span class="tip-dot">·</span>
+          <span>Une belle photo donne envie de cuisiner 🍽️</span>
+        </div>
+        <div class="tip-item">
+          <span class="tip-dot">·</span>
+          <span>Les champs marqués <strong>*</strong> sont obligatoires.</span>
+        </div>
+      </div>
+
+      <div class="fields-card">
+        <div class="fields-title">📋 Champs requis</div>
+        <div class="field-check" [class.done]="recipe.title">
+          <span class="check-icon">{{ recipe.title ? '✅' : '⬜' }}</span> Titre
+        </div>
+        <div class="field-check" [class.done]="recipe.category">
+          <span class="check-icon">{{ recipe.category ? '✅' : '⬜' }}</span> Catégorie
+        </div>
+        <div class="field-check" [class.done]="recipe.description">
+          <span class="check-icon">{{ recipe.description ? '✅' : '⬜' }}</span> Description
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

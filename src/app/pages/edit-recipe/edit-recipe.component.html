@@ -1,0 +1,48 @@
+<div class="edit-page">
+
+  <div class="edit-card">
+
+    <div class="header">
+      <h2>✏️ Modifier la recette</h2>
+      <p>Mettez à jour les informations de votre recette</p>
+    </div>
+
+    <form [formGroup]="recipeForm" (ngSubmit)="updateRecipe()">
+
+      <div class="grid">
+
+        <input placeholder="Titre" formControlName="title" />
+
+        <textarea placeholder="Description" formControlName="description"></textarea>
+
+        <input placeholder="Ingrédients (ex: sel, sucre, lait)" formControlName="ingredients" />
+
+        <!-- CATEGORY FIX -->
+        <select formControlName="category">
+          <option value="">📂 Catégorie</option>
+
+          <option *ngFor="let c of categories" [value]="c._id">
+            {{ c.name }}
+          </option>
+
+        </select>
+
+        <select formControlName="difficulty">
+          <option value="facile">Facile</option>
+          <option value="moyen">Moyen</option>
+          <option value="difficile">Difficile</option>
+        </select>
+
+        <input placeholder="Image URL" formControlName="image" />
+
+      </div>
+
+      <button type="submit" class="btn">
+        💾 Sauvegarder les modifications
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

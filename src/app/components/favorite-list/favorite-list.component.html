@@ -1,0 +1,52 @@
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">🍽️ <span>CuisineOS</span></div>
+    <nav class="nav">
+      <a routerLink="/recipes">📋 Recettes</a>
+      <a routerLink="/favorites" class="active">❤️ Mes Favoris</a>
+      <a routerLink="/categories">📂 Catégories</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn-logout" routerLink="/login">🔓 Se déconnecter</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="header">
+      <div class="header-left">
+        <h1>Mon Carnet Gourmet</h1>
+        <p>{{ favorites.length }} pépites culinaires enregistrées</p>
+      </div>
+      <div class="header-actions">
+  
+        <button class="btn-add" routerLink="/recipes">+ Ajouter</button>
+      </div>
+    </div>
+
+    <div class="recipes-grid" *ngIf="favorites.length > 0; else emptyState">
+      <div class="recipe-card" *ngFor="let r of favorites" >
+        <div class="recipe-img">
+          <img [src]="getImage(r.image)" [alt]="r.title">
+        </div>
+        <button class="fav-btn" (click)="deleteFromFav(r, $event)">🗑</button>
+        <span class="difficulty">{{ r.difficulty }}</span>
+        <div class="recipe-content" (click)="goToRecipeDetail(r)">
+          <h3>{{ r.title }}</h3>
+          <p class="category">🏷 {{ r.category }}</p>
+        </div>
+        <div class="actions">
+          <button class="btn-show" (click)="goToRecipeDetail(r)">Découvrir →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<ng-template #emptyState>
+  <div class="empty-state">
+    <div class="illustration">🍽️</div>
+    <h2>Votre carnet est vide</h2>
+    <p>Il est temps de dénicher de nouvelles saveurs.</p>
+    <button class="btn-add" routerLink="/recipes">Explorer les recettes</button>
+  </div>
+</ng-template>

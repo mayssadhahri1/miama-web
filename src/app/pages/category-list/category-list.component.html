@@ -1,0 +1,81 @@
+<div class="categories-container">
+
+  <header class="page-header">
+    <div class="header-text">
+      <h1>📂 Mes Catégories</h1>
+      <p class="subtitle">Organisez vos recettes par thématiques</p>
+    </div>
+
+    <a routerLink="/categories/add" class="btn-add-cat">
+      <span class="icon">＋</span>
+      <span>Ajouter une catégorie</span>
+    </a>
+  </header>
+
+  <!-- SEARCH -->
+  <div class="search-section">
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+
+      <input
+        [(ngModel)]="search"
+        (input)="onSearch()"
+        class="search-input"
+        placeholder="Rechercher une catégorie..."
+      />
+    </div>
+  </div>
+
+  <!-- LIST -->
+  <div class="cat-grid" *ngIf="categories.length > 0">
+
+    <div class="cat-card" *ngFor="let c of categories">
+
+      <div class="cat-body">
+
+        <div class="cat-icon-wrapper">
+          {{ getCategoryEmoji(c.name) }}
+        </div>
+
+        <h3>{{ c.name }}</h3>
+
+        <p class="cat-desc">
+          {{ c.description || ('Catégorie ' + c.name) }}
+        </p>
+
+      </div>
+
+      <div class="cat-actions">
+
+        <!-- VIEW -->
+        <a [routerLink]="['/categories', c._id]" class="action-btn view">
+          👁
+        </a>
+
+        <!-- EDIT -->
+        <a [routerLink]="['/categories/edit', c._id]" class="action-btn edit">
+          ✏️
+        </a>
+
+        <!-- DELETE -->
+        <button (click)="delete(c._id)" class="action-btn delete">
+          🗑️
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMPTY -->
+  <div class="empty-state" *ngIf="categories.length === 0">
+    <div class="empty-illustration">🍽️</div>
+    <h3>Aucune catégorie trouvée</h3>
+    <p>Essayez de modifier votre recherche</p>
+
+    <button (click)="search=''; load()" class="btn-reset">
+      Réinitialiser
+    </button>
+  </div>
+
+</div>

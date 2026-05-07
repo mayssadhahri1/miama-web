@@ -1,27 +1,109 @@
-# FrontRecettes
+# 🍽️ Frontend - Application de Recettes de Cuisine
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+## 📌 Description générale
+Ce projet frontend est une application web développée avec Angular 17 permettant de gérer et d’afficher des recettes de cuisine.  
+L’application permet aux utilisateurs de consulter, rechercher, filtrer et gérer des recettes à travers une interface moderne, interactive et responsive.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 17
+- TypeScript
+- HTML5 / CSS3
+- RxJS
+- SweetAlert2
+- Bootstrap / CSS Grid (selon implémentation)
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🎯 Objectifs du frontend
+- Fournir une interface utilisateur moderne et intuitive
+- Afficher les recettes sous forme de cartes
+- Permettre la recherche et le filtrage dynamique
+- Offrir une expérience utilisateur fluide et responsive
+- Communiquer avec une API REST backend
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 📂 Fonctionnalités principales
 
-## Running unit tests
+### 🍲 Gestion des recettes
+- Affichage de toutes les recettes
+- Détail d’une recette
+- Ajout d’une recette
+- Modification d’une recette
+- Suppression d’une recette
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+### 🔍 Recherche et filtrage
+- Recherche par nom de recette
+- Filtrage par catégorie
+- Filtrage par niveau de difficulté
+- Pagination des résultats
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+### ⭐ Système de favoris
+- Ajouter une recette aux favoris
+- Retirer une recette des favoris
+- Synchronisation avec l’utilisateur
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+### 🔔 Notifications (Bonus)
+- SweetAlert2 pour :
+  - Ajout réussi
+  - Suppression confirmée
+  - Erreurs utilisateur
+  - Login réussi
+
+---
+
+## 🎴 Interface carte responsive (IMPORTANT ⭐ BONUS)
+
+### 📌 Description
+Les recettes sont affichées sous forme de **cartes modernes (recipe cards)**.  
+Chaque carte contient :
+- Image de la recette
+- Titre
+- Catégorie
+- Niveau de difficulté
+- Bouton d’action (voir / favoris)
+
+---
+
+### 📱 Responsive design
+L’interface est totalement responsive grâce à CSS Grid :
+
+#### 💻 Desktop
+- Affichage en grille (3 à 4 cartes par ligne)
+
+#### 📱 Tablet
+- 2 cartes par ligne
+
+#### 📱 Mobile
+- 1 carte par ligne
+
+---
+
+### 🎨 Exemple de structure carte
+- Image en haut (responsive et recadrée)
+- Contenu texte au centre
+- Boutons d’action en bas
+- Effet hover (animation légère)
+
+---
+
+### 🧠 Avantage technique
+- Améliore l’expérience utilisateur (UX)
+- Adaptation automatique à tous les écrans
+- Optimisation UI/UX professionnelle
+- Respect des standards modernes Angular frontend
+
+---
+
+## 🔗 Connexion Backend
+L’application consomme une API REST :
+
+```http
+http://localhost:3000

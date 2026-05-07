@@ -1,0 +1,58 @@
+.edit-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+.edit-card {
+  background: white;
+  width: 550px;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.header h2 {
+  margin-bottom: 5px;
+}
+
+.header p {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, textarea, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+textarea {
+  height: 90px;
+  resize: none;
+}
+
+.btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #1976d2;
+}

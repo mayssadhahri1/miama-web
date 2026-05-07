@@ -1,0 +1,155 @@
+.add-cat-page {
+  padding: 60px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at top right, #fff4e6 0%, transparent 300px);
+}
+
+.back-nav {
+  width: 100%;
+  max-width: 550px;
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  text-decoration: none;
+  color: #948D88;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-back:hover { color: #F4A340; }
+
+/* --- Card Style --- */
+.form-card {
+  background: white;
+  width: 100%;
+  max-width: 550px;
+  padding: 50px;
+  border-radius: 40px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.04);
+  border: 1px solid rgba(255,255,255,0.8);
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.circle-icon {
+  width: 70px;
+  height: 70px;
+  background: #FFF4E6;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 20px;
+  color: #F4A340;
+}
+
+.form-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin: 0;
+  color: #2D241E;
+}
+
+.form-header p {
+  color: #948D88;
+  margin-top: 10px;
+}
+
+/* --- Input Groups --- */
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #4A3200;
+  font-size: 0.95rem;
+  padding-left: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 18px 25px;
+  border: 2px solid #F8F9FA;
+  background: #F8F9FA;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  background: white;
+  border-color: #F4A340;
+  box-shadow: 0 10px 20px rgba(244, 163, 64, 0.1);
+}
+
+input.error { border-color: #ff4757; }
+
+/* --- Preview Box --- */
+.preview-box {
+  background: #FFFBF5;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  border: 1px dashed #F4A340;
+}
+
+.preview-box span {
+  font-size: 0.8rem;
+  color: #F4A340;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-preview {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #2D241E;
+}
+
+/* --- Submit Button --- */
+.btn-submit {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #F4A340, #E8912A);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(244, 163, 64, 0.3);
+  transition: 0.3s;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(244, 163, 64, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}

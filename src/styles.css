@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importation d'une police élégante */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fdf2e9; /* Fond crème très doux */
+  margin: 0;
+  padding: 0;
+}
+
+/* Effet de focus personnalisé pour les inputs */
+.form-control:focus {
+  border-color: #ff7e5f;
+  box-shadow: 0 0 0 0.25rem rgba(255, 126, 95, 0.1);
+}
+
+.auth-card {
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}

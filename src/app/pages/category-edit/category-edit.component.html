@@ -1,0 +1,57 @@
+<div class="edit-cat-page">
+  
+  <div class="top-nav">
+    <a routerLink="/categories" class="btn-back">
+      <span class="arrow">←</span> Retour à la liste
+    </a>
+  </div>
+
+  <div class="edit-card">
+    <div class="card-header">
+      <div class="edit-badge">Mode Édition</div>
+      <h2>Modifier : {{ category.name }}</h2>
+      <p>Mettez à jour les informations de cette thématique</p>
+    </div>
+
+    <form (ngSubmit)="update()" #editForm="ngForm">
+      
+      <div class="form-group">
+        <label for="name">Nom de la thématique</label>
+        <div class="input-wrapper">
+          <input 
+            id="name"
+            [(ngModel)]="category.name" 
+            name="name"
+            placeholder="Nom de la catégorie" 
+            required
+            #name="ngModel">
+          <span class="focus-border"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="desc">Description détaillée</label>
+        <div class="input-wrapper">
+          <textarea 
+            id="desc"
+            [(ngModel)]="category.description" 
+            name="description"
+            placeholder="Décrivez cette catégorie..."
+            rows="5"></textarea>
+          <span class="focus-border"></span>
+        </div>
+      </div>
+
+      <div class="actions-group">
+        <button type="submit" class="btn-update" [disabled]="editForm.invalid">
+          ✨ Enregistrer les modifications
+        </button>
+        
+        <button type="button" routerLink="/categories" class="btn-cancel">
+          Annuler
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

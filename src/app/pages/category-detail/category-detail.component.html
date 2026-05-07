@@ -1,0 +1,33 @@
+<div class="detail-page" *ngIf="category">
+  
+  <div class="navigation-bar">
+    <a routerLink="/categories" class="back-link">
+      <span class="icon">🔙</span> Retour aux thématiques
+    </a>
+  </div>
+
+  <div class="detail-container">
+    <div class="category-banner">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <div class="large-icon">📂</div>
+        <h1 class="category-title">{{ category.name }}</h1>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <div class="info-header">
+        <span class="badge">Détails de la catégorie</span>
+        <div class="separator"></div>
+      </div>
+      
+      <div class="description-content">
+        <p *ngIf="category.description">{{ category.description }}</p>
+        <p *ngIf="!category.description" class="no-desc">
+          Aucune description disponible pour cette thématique.
+        </p>
+      </div>
+        
+      </div>
+    </div>
+  </div>

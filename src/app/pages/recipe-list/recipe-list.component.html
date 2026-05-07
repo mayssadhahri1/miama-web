@@ -1,0 +1,105 @@
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="logo">🍽️ <span>CuisineOS</span></div>
+    <nav class="nav">
+      <a routerLink="/">📋 Recettes</a>
+      <a routerLink="/categories">📂 Catégories</a>
+      <a routerLink="/favorites">❤️ Favoris</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <!-- HEADER -->
+    <header class="header">
+      <h1>🍳 Recettes</h1>
+      <a routerLink="/add" class="btn-add">➕ Ajouter</a>
+    </header>
+
+    <!-- FILTER -->
+    <section class="filter-card">
+
+      <input
+        [(ngModel)]="filters.search"
+        (input)="onFilterChange()"
+        placeholder="🔍 Rechercher..."
+      />
+
+      <!-- ✅ CORRIGÉ CATEGORY -->
+      <select [(ngModel)]="filters.category" (change)="onFilterChange()">
+        <option value="">Toutes catégories</option>
+
+        <option *ngFor="let c of categories" [value]="c._id">
+          {{ c.name }}
+        </option>
+      </select>
+
+      <select [(ngModel)]="filters.difficulty" (change)="onFilterChange()">
+        <option value="">Niveau</option>
+        <option value="facile">Facile</option>
+        <option value="moyen">Moyen</option>
+        <option value="difficile">Difficile</option>
+      </select>
+
+    </section>
+
+    <!-- LIST -->
+    <section class="recipes-grid">
+
+      <div class="recipe-card"
+           *ngFor="let r of recipes"
+           (click)="goToDetail(r, $event)">
+
+        <!-- FAVORITE -->
+        <button class="fav-btn"
+                [class.active]="isFavorite(r)"
+                (click)="toggleFavorite(r, $event)">
+          {{ isFavorite(r) ? '❤️' : '🤍' }}
+        </button>
+
+        <!-- IMAGE -->
+        <div class="recipe-image-container">
+          <img [src]="getImage(r)" class="recipe-img">
+        </div>
+
+        <!-- CONTENT -->
+        <div class="recipe-content">
+          <h3>{{ r.title }}</h3>
+
+          <!-- ✅ CATEGORY FIX -->
+          <p>📂 {{ r.category?.name || r.category }}</p>
+
+          <p>⚡ {{ r.difficulty }}</p>
+        </div>
+
+        <div class="actions">
+          <button class="btn-show">Voir</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- EMPTY -->
+    <div *ngIf="recipes.length === 0" class="empty-state">
+      Aucune recette 😕
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+
+      <button (click)="prevPage()" [disabled]="currentPage === 1">
+        ⬅ Précédent
+      </button>
+
+      <span>Page {{ currentPage }} / {{ totalPages }}</span>
+
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+        Suivant ➡
+      </button>
+
+    </div>
+
+  </main>
+</div>

@@ -1,0 +1,50 @@
+<div class="add-cat-page">
+  
+  <div class="back-nav">
+    <a routerLink="/categories" class="btn-back">← Retour aux catégories</a>
+  </div>
+
+  <div class="form-card">
+    <div class="form-header">
+      <div class="circle-icon">✨</div>
+      <h2>Nouvelle Catégorie</h2>
+      <p>Créez un nouvel univers pour vos recettes</p>
+    </div>
+
+    <form (ngSubmit)="submit()" #catForm="ngForm">
+      
+      <div class="input-group">
+        <label>Nom de la catégorie</label>
+        <input 
+          [(ngModel)]="category.name" 
+          name="name"
+          placeholder="Ex: Desserts Gourmands, Cuisine Italienne..." 
+          required
+          #name="ngModel"
+          [class.error]="name.invalid && name.touched">
+      </div>
+
+      <div class="input-group">
+        <label>Description</label>
+        <textarea 
+          [(ngModel)]="category.description" 
+          name="description"
+          placeholder="Décrivez brièvement le type de plats que l'on trouvera ici..."
+          rows="4"></textarea>
+      </div>
+
+      <div class="preview-box" *ngIf="category.name">
+        <span>Aperçu du badge :</span>
+        <div class="badge-preview">
+          📂 {{ category.name }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="catForm.invalid">
+        🚀 Créer la catégorie
+      </button>
+
+    </form>
+  </div>
+
+</div>
