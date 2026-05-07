@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "front-recettes",
   "version": "0.0.0",
   "scripts": {
@@ -45,5 +46,33 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.4.2"
+=======
+  "name": "app-blog",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "mongodb",
+    "mongoos",
+    "express",
+    "nodemon"
+  ],
+  "license": "MIT",
+  "author": "mayssa",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.4.1",
+    "nodemon": "^3.1.14",
+    "slugify": "^1.6.9"
+>>>>>>> 73607a5c2d170a59be559a35609eb163cd59d4fd
   }
 }
